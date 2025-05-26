@@ -1,14 +1,24 @@
 #root {
   text-align: center;
-  background-color: #8600ED;
   min-width: 100vw;
-
 }
 
 #name {
   position: absolute;
   top: 5px;
   left: 5px;
+}
+
+.select-size {
+  background-color: #8600ED;
+  color: white;
+  max-width: 150px;
+  font-size: 0.8em;
+  border: 3px solid white;
+}
+
+.score > * {
+  color: white;
 }
 
 @media (prefers-reduced-motion: no-preference) {

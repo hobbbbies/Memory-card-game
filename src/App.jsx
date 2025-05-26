@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import Card from './components/Card'
 import pokemonList from './pokemonList';
 import Scoreboard from './components/Scoreboard';
+import SelectSize from './components/SelectSize';
 
 import './styles/App.css'
 
@@ -9,7 +10,7 @@ function App() {
   const [cardsClicked, setCardsClicked] = useState([]);
   const [score, setScore] = useState(0);
   const [highScore, setHighScore] = useState(Array(1).fill(0));
-  const randomPokemon = pokemonList();
+  const [randomPokemon, setRandomPokemon] = useState(pokemonList(12));
 
   function onCardClick(pokemonName) {
     setScore(score + 1);
@@ -25,11 +26,15 @@ function App() {
     }
   }, [cardsClicked, score, highScore]);
 
+  // useEffect(() => {
+  //   if (score >= )
+  // }, [score])
 
   return (
     <div>
       <div id="name">Memory Game by Vitanov</div>
       <Scoreboard score={score} highScore={highScore} />
+      <SelectSize setRandomPokemon={setRandomPokemon}/>
       <div className="board">
         {randomPokemon.map((pokemon, idx) => (
           <Card

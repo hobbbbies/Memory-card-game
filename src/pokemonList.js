@@ -1,6 +1,6 @@
 import randomInteger from "./randomInteger";
 
-export default function pokemonList() {
+export default function pokemonList(size) {
     let pokemon =  [
         "Pikachu",
         "Charizard",
@@ -26,6 +26,11 @@ export default function pokemonList() {
         // Swap values 
         [pokemon[currentIndex], pokemon[randomIndex]] = [
             pokemon[randomIndex], pokemon[currentIndex]];
+    }
+
+    const pokeCount = pokemon.length
+    for(let i = 0; i < pokeCount - size; i++) {
+        pokemon.pop();
     }
 
     return pokemon;
