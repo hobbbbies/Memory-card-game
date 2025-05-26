@@ -1,0 +1,14 @@
+:root {
+    --boardSize: 4;
+}
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(var(--boardSize), 1fr);
+}
+
+.card {
+    border: 2px solid black;
+    margin: 16px;
+    border-radius: 16px;
+}
