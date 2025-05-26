@@ -18,16 +18,17 @@ function App() {
 
   useEffect(() => {
     if (cardsClicked === null) {
-      setHighScore(...highScore, score);
+      setHighScore([...highScore, score]);
       setScore(0)
-      alert("gameOver");
+      alert("Oops! You already picked that card!");
       setCardsClicked([]);
     }
   }, [cardsClicked, score, highScore]);
 
 
   return (
-    <div className='main-container'>
+    <div>
+      <div id="name">Memory Game by Vitanov</div>
       <Scoreboard score={score} highScore={highScore} />
       <div className="board">
         {randomPokemon.map((pokemon, idx) => (
