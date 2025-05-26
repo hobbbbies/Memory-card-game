@@ -10,7 +10,8 @@ function App() {
   const [cardsClicked, setCardsClicked] = useState([]);
   const [score, setScore] = useState(0);
   const [highScore, setHighScore] = useState(Array(1).fill(0));
-  const [randomPokemon, setRandomPokemon] = useState(pokemonList(12));
+  const [difficulty, setDifficulty] = useState(12);
+  const randomPokemon = pokemonList(difficulty);
 
   function onCardClick(pokemonName) {
     setScore(score + 1);
@@ -18,23 +19,22 @@ function App() {
   }
 
   useEffect(() => {
-    if (cardsClicked === null) {
+    if (cardsClicked === null || score >= difficulty) {
       setHighScore([...highScore, score]);
       setScore(0)
-      alert("Oops! You already picked that card!");
+      const alertText = score >= difficulty 
+      ? "Congratulations! You won." 
+      : "Oops! You already picked that card!";
+      alert(alertText);
       setCardsClicked([]);
     }
-  }, [cardsClicked, score, highScore]);
-
-  // useEffect(() => {
-  //   if (score >= )
-  // }, [score])
+  }, [cardsClicked, score, highScore, difficulty]);
 
   return (
     <div>
       <div id="name">Memory Game by Vitanov</div>
       <Scoreboard score={score} highScore={highScore} />
-      <SelectSize setRandomPokemon={setRandomPokemon}/>
+      <SelectSize setDifficulty={setDifficulty}/>
       <div className="board">
         {randomPokemon.map((pokemon, idx) => (
           <Card

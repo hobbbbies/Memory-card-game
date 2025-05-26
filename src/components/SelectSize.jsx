@@ -1,10 +1,7 @@
-import pokemonList from '../pokemonList';
-
-
-export default function SelectSize( { setRandomPokemon } ) {
+export default function SelectSize( { setDifficulty } ) {
     
     function handleSelect(event) {
-        setRandomPokemon(pokemonList(event.target.value));
+        setDifficulty(event.target.value);
     }
     
     return (
