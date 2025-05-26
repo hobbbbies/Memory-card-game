@@ -1,5 +1,3 @@
-import pokemonList from "../pokemonList"
-import randomInteger from "../randomInteger";
 import "../styles/Card.css"
 import { useState, useEffect } from "react";
 
@@ -14,7 +12,7 @@ export default function Card( { pokemon, cardsClicked, setCardsClicked } ) {
             setPokemonObject({ name: data.name, src: data.sprites.front_default }); 
         };
         getApiImg();
-    }, []);
+    }, [pokemon]);
 
     function handeClick() {
         if (cardsClicked.includes(pokemon)) {

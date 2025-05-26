@@ -8,7 +8,10 @@
 }
 
 .card {
-    border: 2px solid black;
+    border: 3px solid black;
     margin: 16px;
     border-radius: 16px;
+    
+    background: #8600ed;
+    background: linear-gradient(90deg, rgba(134, 0, 237, 1) 0%, rgba(255, 112, 112, 1) 81%);
 }
