@@ -1,7 +1,7 @@
 import randomInteger from "./randomInteger";
 
 export default function pokemonList(size) {
-    let pokemon =  [
+    const pokemon =  [
         "Pikachu",
         "Charizard",
         "Bulbasaur",
@@ -16,7 +16,29 @@ export default function pokemonList(size) {
         "Gyarados"
     ]
 
-    let currentIndex = pokemon.length;
+    const pokemonMedium = pokemon.filter((_, index) => {
+        return index < 8;
+    })
+
+    const pokemonEasy = pokemon.filter((_, index) => {
+        return index < 4;
+    })
+
+    let currArr;
+
+    switch(size) {
+        case '8': 
+            currArr = pokemonMedium
+            break;
+        case '4': 
+            currArr = pokemonEasy;
+            break;
+        default: 
+            currArr = pokemon
+            break;
+    }
+
+    let currentIndex = currArr.length;
 
     // Using Fisher-Yates shuffle algorithm
     while (currentIndex !== 0) {
@@ -24,14 +46,9 @@ export default function pokemonList(size) {
         currentIndex --;
 
         // Swap values 
-        [pokemon[currentIndex], pokemon[randomIndex]] = [
-            pokemon[randomIndex], pokemon[currentIndex]];
+        [currArr[currentIndex], currArr[randomIndex]] = [
+            currArr[randomIndex], currArr[currentIndex]];
     }
 
-    const pokeCount = pokemon.length
-    for(let i = 0; i < pokeCount - size; i++) {
-        pokemon.pop();
-    }
-
-    return pokemon;
+    return currArr;
 }
