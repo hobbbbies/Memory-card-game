@@ -20,9 +20,10 @@ function App() {
 
   useEffect(() => {
     if (cardsClicked === null || score >= difficulty) {
-      setHighScore([...highScore, score]);
+      const playerLost = score >= difficulty ? 0 : 1
+      setHighScore([...highScore, score - playerLost]);
       setScore(0)
-      const alertText = score >= difficulty 
+      const alertText = playerLost === 0 
       ? "Congratulations! You won." 
       : "Oops! You already picked that card!";
       alert(alertText);
@@ -34,7 +35,7 @@ function App() {
     <div>
       <div id="name">Memory Game by Vitanov</div>
       <Scoreboard score={score} highScore={highScore} />
-      <SelectSize setDifficulty={setDifficulty}/>
+      <SelectSize setDifficulty={setDifficulty} setScore={setScore} setCardsClicked={setCardsClicked}/>
       <div className="board">
         {randomPokemon.map((pokemon, idx) => (
           <Card

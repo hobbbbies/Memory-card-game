@@ -14,4 +14,5 @@
     
     background: #8600ed;
     background: linear-gradient(90deg, rgba(134, 0, 237, 1) 0%, rgba(255, 112, 112, 1) 81%);
+    cursor: pointer;
 }

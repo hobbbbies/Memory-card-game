@@ -1,7 +1,9 @@
-export default function SelectSize( { setDifficulty } ) {
+export default function SelectSize( { setDifficulty, setScore, setCardsClicked } ) {
     
     function handleSelect(event) {
         setDifficulty(event.target.value);
+        setScore(0);
+        setCardsClicked([]);
     }
     
     return (
